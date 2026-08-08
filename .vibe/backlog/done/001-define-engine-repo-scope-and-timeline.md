@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Define `engine` repo scope and timeline
 
@@ -9,9 +9,11 @@ status: todo
 Needs a Product Owner decision on: what "engine" covers first within combat simulation (rendering? input? full match rules/win conditions?), which repos it depends on beyond `character` (does it need `character-editor` or `character-viewer-web` to exist first?), and roughly when it becomes worth starting relative to `character-editor`.
 
 ## Acceptance Criteria
-- [ ] `engine`'s initial scope is written down within the combat-simulation boundary (what it does and explicitly does not do at first)
-- [ ] Its dependency on other OpenKakutou repos is stated
-- [ ] `repos.md` status for `engine` is updated from "planned (future)" to reflect the actual sequencing decision
+- [x] `engine`'s initial scope is written down within the combat-simulation boundary (what it does and explicitly does not do at first)
+- [x] Its dependency on other OpenKakutou repos is stated
+- [x] `repos.md` status for `engine` is updated from "planned (future)" to reflect the actual sequencing decision
 
 ## Notes
 Raised while setting up the `roadmap` repo's initial structure; not yet discussed with the Product Owner.
+
+Resolved by `.vibe/decisions/008`: state model → trigger/expression evaluator → state-machine execution → `.zss` execution (decision `012`) → physics → hit detection → damage/combo → round flow. Depends on `character` and `stage`; can start immediately, not gated on `character-editor`. `repos.md` moved to `active`.
