@@ -9,6 +9,8 @@ Each domain (`character`, `stage`, `lifebar`, …) follows the same split, mirro
 - `<domain>-viewer-web` — static web app to **visualize** (and, where applicable, control) content of that domain. Read-only.
 - `<domain>-editor` — app to **modify and/or create** content of that domain. Read+write.
 
+Separately, `mode-<name>` is a **game mode**: the unit that actually consumes `engine` for one specific way of playing (its own character-selection flow, match flow, result flow) — e.g. `mode-quick-versus`, `mode-tag-battle`. See `.vibe/decisions/005`.
+
 ## Repos
 
 | Domain | Repo | Status | Role |
@@ -20,8 +22,9 @@ Each domain (`character`, `stage`, `lifebar`, …) follows the same split, mirro
 | stage | `stage-editor` | idea | Modify and/or create a stage. Not yet scoped — see `.vibe/backlog/002`. |
 | lifebar | `lifebar-viewer-web` | idea | Visualize/preview a lifebar (health/power bar UI). Not yet scoped — see `.vibe/backlog/002`. |
 | lifebar | `lifebar-editor` | idea | Modify and/or create a lifebar. Not yet scoped — see `.vibe/backlog/002`. |
-| (org-wide) | `engine` | planned (future) | Combat simulation that runs while two characters fight, built on the same extracted libraries as `character`. Not the select screen, not menus/game flow — see `.vibe/decisions/004`. Detailed scope/timeline not yet defined — see `.vibe/backlog/001`. |
-| (org-wide) | `character-selector` | idea | Character select screen. Uses `engine` (and `character`) but is a separate repo, not part of `engine` — see `.vibe/decisions/004`. Not yet scoped — see `.vibe/backlog/003`. |
+| (org-wide) | `engine` | planned (future) | Combat simulation that runs while two characters fight, built on the same extracted libraries as `character`. Not game modes, not menus/game flow — see `.vibe/decisions/004`. Detailed scope/timeline not yet defined — see `.vibe/backlog/001`. |
+| mode | `mode-quick-versus` | idea | First game mode: standard two-player, one-character-each versus match. Consumes `engine`, owns its own character-selection/match/result flow. Formerly named `character-selector` — see `.vibe/decisions/005`. Not yet scoped — see `.vibe/backlog/003`. |
+| mode | `mode-tag-battle` | idea | Tag battle mode (multiple characters per side). Mentioned as an example of another mode; not yet committed to or scoped. |
 
 ## Status legend
 
