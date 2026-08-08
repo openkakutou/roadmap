@@ -9,7 +9,7 @@ Each domain (`character`, `stage`, `lifebar`, …) follows the same split, mirro
 - `<domain>-viewer-web` — static web app to **visualize** (and, where applicable, control) content of that domain. Read-only.
 - `<domain>-editor` — app to **modify and/or create** content of that domain. Read+write.
 
-Separately, `mode-<name>` is a **game mode**: the unit that actually consumes `engine` for one specific way of playing (its own character-selection flow, match flow, result flow) — e.g. `mode-quick-versus`, `mode-tag-battle`. See `.vibe/decisions/005`.
+Separately, `mode-<name>` is a **game mode**: a standalone, autonomous game consuming `engine` for one specific way of playing (its own character-selection flow, match flow, result flow) — e.g. `mode-quick-versus`, `mode-tag-battle`. Each ships as a complete playable game on its own; combining several modes into one game is a deferred future possibility, not currently scoped. See `.vibe/decisions/005` and `.vibe/decisions/006`.
 
 ## Repos
 
@@ -23,8 +23,8 @@ Separately, `mode-<name>` is a **game mode**: the unit that actually consumes `e
 | lifebar | `lifebar-viewer-web` | idea | Visualize/preview a lifebar (health/power bar UI). Not yet scoped — see `.vibe/backlog/002`. |
 | lifebar | `lifebar-editor` | idea | Modify and/or create a lifebar. Not yet scoped — see `.vibe/backlog/002`. |
 | (org-wide) | `engine` | planned (future) | Combat simulation that runs while two characters fight, built on the same extracted libraries as `character`. Not game modes, not menus/game flow — see `.vibe/decisions/004`. Detailed scope/timeline not yet defined — see `.vibe/backlog/001`. |
-| mode | `mode-quick-versus` | idea | First game mode: standard two-player, one-character-each versus match. Consumes `engine`, owns its own character-selection/match/result flow. Formerly named `character-selector` — see `.vibe/decisions/005`. Not yet scoped — see `.vibe/backlog/003`. |
-| mode | `mode-tag-battle` | idea | Tag battle mode (multiple characters per side). Mentioned as an example of another mode; not yet committed to or scoped. |
+| mode | `mode-quick-versus` | idea | First game mode: a standalone, playable game — standard two-player, one-character-each versus match. Consumes `engine`, owns its own character-selection/match/result flow. Formerly named `character-selector` — see `.vibe/decisions/005`, `.vibe/decisions/006`. Not yet scoped — see `.vibe/backlog/003`. |
+| mode | `mode-tag-battle` | idea | Tag battle mode (multiple characters per side), a standalone game like `mode-quick-versus`. Mentioned as an example of another mode; not yet committed to or scoped. |
 
 ## Status legend
 
