@@ -20,7 +20,8 @@ Each domain (`character`, `stage`, `lifebar`, …) follows the same split, mirro
 | stage | `stage-editor` | idea | Modify and/or create a stage. Not yet scoped — see `.vibe/backlog/002`. |
 | lifebar | `lifebar-viewer-web` | idea | Visualize/preview a lifebar (health/power bar UI). Not yet scoped — see `.vibe/backlog/002`. |
 | lifebar | `lifebar-editor` | idea | Modify and/or create a lifebar. Not yet scoped — see `.vibe/backlog/002`. |
-| (org-wide) | `engine` | planned (future) | Game engine in the spirit of Ikemen GO, built on the same extracted libraries as `character`. Scope/timeline not yet defined — see `.vibe/backlog/001`. |
+| (org-wide) | `engine` | planned (future) | Combat simulation that runs while two characters fight, built on the same extracted libraries as `character`. Not the select screen, not menus/game flow — see `.vibe/decisions/004`. Detailed scope/timeline not yet defined — see `.vibe/backlog/001`. |
+| (org-wide) | `character-selector` | idea | Character select screen. Uses `engine` (and `character`) but is a separate repo, not part of `engine` — see `.vibe/decisions/004`. Not yet scoped — see `.vibe/backlog/003`. |
 
 ## Status legend
 
