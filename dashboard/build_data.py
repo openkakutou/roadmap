@@ -70,6 +70,12 @@ def build(workspace_root):
 
     for repo in REPO_ORDER:
         repo_path = os.path.join(workspace_root, repo)
+        if not os.path.isdir(repo_path):
+            raise SystemExit(
+                f"repo directory not found: {repo_path!r} "
+                f"(expected a sibling checkout for {repo!r} — is REPO_ORDER out of sync "
+                f"with the actual workspace, or was the repo renamed?)"
+            )
         base = os.path.join(repo_path, ".vibe", "backlog")
         pending_files = sorted(glob.glob(os.path.join(base, "*.md")))
         done_files = sorted(glob.glob(os.path.join(base, "done", "*.md")))
