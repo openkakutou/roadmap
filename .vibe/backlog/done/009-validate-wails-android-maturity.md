@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Validate Wails' Android build for `mode-quick-versus` before treating Android as a confirmed target
 
@@ -16,3 +16,5 @@ Nothing about this blocks Windows/Mac/Linux, where Wails' desktop support is mat
 
 ## Notes
 Raised from decision `021`'s rejected-alternatives section, which chose not to pre-emptively split shells (Wails desktop / Tauri mobile) without first confirming Wails' mobile path is actually broken for this use case.
+
+**Moot (2026-08-16):** decision `022` drops Wails entirely — no webview, no Wails mobile bridge to validate. Android's real open question now is desktop OpenGL vs. OpenGL ES for the `go-gl`+SDL2 renderer, tracked as backlog `010`.
