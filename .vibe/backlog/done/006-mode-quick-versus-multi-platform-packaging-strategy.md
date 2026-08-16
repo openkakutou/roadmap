@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Pick a packaging/stack strategy for `mode-quick-versus` across Windows, Mac, Linux, and Android (web optional)
 
@@ -13,9 +13,11 @@ What's still open, needing a Product Owner + technical decision:
 - Whether this is `mode-quick-versus`-specific or should become an org-wide convention for every `mode-*` repo (only one mode exists today, so may be premature to generalize — mirrors the reasoning in decision `006` about not designing for a second mode too early).
 
 ## Acceptance Criteria
-- [ ] Packaging/stack strategy chosen and recorded (a `mode-quick-versus` decision if repo-local, a roadmap decision if it turns out to generalize across `mode-*`)
-- [ ] `mode-quick-versus`'s own CLAUDE.md updated to drop the stale "static site, no backend" framing
-- [ ] Open question above about WASM vs. native library consumption per platform resolved
+- [x] Packaging/stack strategy chosen and recorded (a `mode-quick-versus` decision if repo-local, a roadmap decision if it turns out to generalize across `mode-*`)
+- [x] `mode-quick-versus`'s own CLAUDE.md updated to drop the stale "static site, no backend" framing
+- [x] Open question above about WASM vs. native library consumption per platform resolved
 
 ## Notes
 Raised from `.vibe/decisions/010`'s amendment, prompted by the Product Owner correcting the `openkakutou.github.io` showcase site's copy (it wrongly implied every app, including games, runs only in the browser).
+
+**Resolved 2026-08-16** by `.vibe/decisions/020`: Tauri (webview-wrapping native shell, no rewrite), reusing the existing web build for the web target and the same codebase for Windows/Mac/Linux/Android via Tauri Mobile. WASM stays the delivery mechanism on every platform (Tauri's webview loads it the same as a browser does) — no native Go binary path needed. Turned out to generalize beyond `mode-quick-versus` alone, to the `*-editor` repos' desktop builds too (see backlog `007`, same decision).

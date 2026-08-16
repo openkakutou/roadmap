@@ -13,9 +13,11 @@ What's still open, needing a Product Owner + technical decision:
 - Build/release/signing pipeline: where desktop artifacts get built (per-repo CI vs. shared), how they're versioned relative to each repo's own release process, and where `openkakutou.github.io` links to (e.g. GitHub Releases assets per repo).
 
 ## Acceptance Criteria
-- [ ] Packaging/stack strategy chosen and recorded (a decision in whichever repo if it ends up repo-specific, a roadmap decision if it generalizes across `*-editor` and/or `mode-quick-versus`)
+- [x] Packaging/stack strategy chosen and recorded (a decision in whichever repo if it ends up repo-specific, a roadmap decision if it generalizes across `*-editor` and/or `mode-quick-versus`)
 - [ ] First desktop build (any one platform, any one editor) produced and reachable at a stable URL
 - [ ] `openkakutou.github.io`'s pending Windows/Mac/Linux platform pills updated to live links as each becomes available
 
 ## Notes
 Raised from decision `019`, prompted by the Product Owner clarifying `openkakutou.github.io`'s editor cards needed four platform links (web included), not just web.
+
+**Strategy resolved 2026-08-16** by `.vibe/decisions/020`: Tauri, same choice as `mode-quick-versus`'s backlog `006` (the two questions turned out to share one answer, as this item anticipated). What remains open here is purely implementation: setting up Tauri per editor repo, a per-OS CI build matrix, and flipping the showcase page's pending pills to live links as builds land — tracked as each editor's own repo-local backlog once that work starts, not further detailed here.
