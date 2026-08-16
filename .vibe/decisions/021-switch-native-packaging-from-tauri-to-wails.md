@@ -1,0 +1,21 @@
+---
+date: 2026-08-16
+status: accepted
+---
+# Switch native-target packaging from Tauri to Wails, now that the core stays Go
+
+**Context:** Decision `020` picked Tauri over Wails mainly on one argument: if the performance-critical core (`engine` first) ever moved to Rust, Tauri's already-Rust shell would need no rework, where Wails (a Go-based shell) would end up running Go for the shell alongside a hypothetical Rust core — two languages in one process for no benefit. Backlog `008`'s spike (2026-08-16, `engine/benchmarks/wasm-lang-spike/`) gathered real data: Rust/WASM is ~2.28× faster and ~22.6× smaller than Go/WASM on a representative synthetic workload, but the specific fear that motivated preferring Rust — GC pauses risking dropped frames — wasn't borne out (avg ~60 µs pause vs. a 16.67 ms/frame budget at 60fps). Weighed against Rust's own real costs (safe-Rust's friction with graph-like/shared-reference data — state machines, hit events referencing two fighters — plus slower compile times cutting against this org's TDD-first loop, plus a genuine learning curve), the Product Owner decided to keep `engine` and every other core library in Go.
+
+That removes decision `020`'s deciding argument for Tauri. With Go confirmed as the core language, Wails fits better than Tauri for the native targets: it lets Windows/Mac/Linux/Android builds skip WASM entirely — a native Go binary calling `character`/`stage`/`sff`/`engine` as ordinary Go package imports, with the OS's own webview rendering the existing TypeScript/`web-ui-kit` frontend and Wails' JS↔Go bindings replacing what would otherwise be a `.wasm` load. Removes a layer that only existed to make the core portable to a Rust-hosted shell — Go's runtime running inside a WASM sandbox inside a JS engine inside a Tauri-hosted webview — which is no longer needed once nothing about the shell requires Rust.
+
+**Decision:** Tauri is dropped; **Wails** is adopted for every native target:
+- **Web** (`mode-quick-versus` and all three editors): unchanged — still the existing Vite/TypeScript build, deployed to GitHub Pages, still needs WASM (`character`/`stage`/`sff`/`engine`'s WASM builds) since a browser has no other way to run Go code. Bonus target for `mode-quick-versus` per decision `010`, live already for the three editors.
+- **Windows/Mac/Linux** (`mode-quick-versus` and the three editors) **and Android** (`mode-quick-versus` only, per decision `010`): Wails wraps the same TypeScript/`web-ui-kit` frontend in a native Go application. The Go backend imports `character`/`stage`/`sff`/`engine` directly as Go modules — no WASM build step, no bridge/glue code, no `wasm_exec.js` equivalent needed for these targets at all.
+
+**Reason:** Once the core stays Go, Wails is strictly closer to the metal than Tauri-plus-WASM for the native targets: one fewer layer (no WASM sandbox, no JS engine hosting it) for the exact same language everywhere. Matches this org's existing Go-first tooling instead of introducing Rust for a shell that no longer needs it. Consistent with the Product Owner's earlier point that multiple execution paths are fine as long as each is tested (decision `020`'s context) — WASM for the browser, native Go for everything else — except this now needs *fewer* distinct paths than the Tauri option would have (no Rust anywhere in the org).
+
+**Rejected alternatives:**
+- *Keep Tauri* — rejected: its one advantage (already-Rust shell, ready if the core became Rust) no longer applies once the core stays Go; keeping it would mean carrying a WASM layer and a Rust toolchain for no remaining benefit.
+- *Wails for desktop, Tauri for `mode-quick-versus`'s Android target only* (splitting by platform maturity) — considered, not adopted: Wails v3's mobile support is experimental, not part of its stability promise (same caveat noted for Tauri's Android WebView secure-context issue in decision `020`'s amendment) — a real risk, but running two different native shells for one app is more standing complexity than that single open risk currently justifies. Revisit specifically if Wails' Android build turns out broken in practice — tracked as backlog `009`, not decided against Wails preemptively here.
+
+**Note:** This does not reopen backlog `008`'s Rust question — that's closed, staying Go. It only changes how the (Go) core reaches native platforms.

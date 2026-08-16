@@ -21,3 +21,5 @@ What's still open, needing a Product Owner + technical decision:
 Raised from decision `019`, prompted by the Product Owner clarifying `openkakutou.github.io`'s editor cards needed four platform links (web included), not just web.
 
 **Strategy resolved 2026-08-16** by `.vibe/decisions/020`: Tauri, same choice as `mode-quick-versus`'s backlog `006` (the two questions turned out to share one answer, as this item anticipated). What remains open here is purely implementation: setting up Tauri per editor repo, a per-OS CI build matrix, and flipping the showcase page's pending pills to live links as builds land — tracked as each editor's own repo-local backlog once that work starts, not further detailed here.
+
+**Superseded 2026-08-16 (later same day)** by `.vibe/decisions/021`: after backlog `008`'s Rust-vs-Go spike, the core stays Go — which removes decision `020`'s reason for Tauri over Wails. The strategy is now **Wails**, not Tauri, still shared across all three editors and `mode-quick-versus`. Implementation work (per-repo Wails setup, per-OS CI matrix, showcase pill updates) is unchanged in shape, just targets Wails instead.

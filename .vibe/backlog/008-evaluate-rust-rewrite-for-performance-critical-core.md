@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Evaluate whether performance-critical core libraries (starting with `engine`) should be rewritten in Rust
 
@@ -13,11 +13,11 @@ Go compiled to WebAssembly (`GOOS=js GOARCH=wasm`) embeds Go's own runtime (goro
 ## Acceptance Criteria
 - [x] A small synthetic benchmark — representative of one simulation tick under realistic match load (N trigger evaluations + state transitions + collision checks per frame) — built in both Go/WASM and Rust/WASM, before `engine` backlog item `005` (physics/movement) starts. See `engine`'s `benchmarks/wasm-lang-spike/` (added 2026-08-16). Both implementations mirrored 1:1 and verified to produce an identical checksum, confirming equivalent work.
 - [x] Frame-time and binary-size data gathered for both — **run under Node** (a plain WASM host), not inside an actual Tauri webview. Rust ~2.28× faster execution, ~3.2× faster instantiation, ~22.6× smaller binary. See `RESULTS.md` in that directory for full numbers.
-- [ ] ~~The same benchmark also run inside Tauri's **Android** webview~~ — **not done, not possible in the environment this spike ran in**: no display server, no Tauri CLI, no Android SDK/emulator available. Still open — needs a real workstation with Android Studio and a GUI. Android WebView's handling of Tauri's non-secure asset origin (see decision `020`'s later amendment, `wry` issues [#1709](https://github.com/tauri-apps/wry/issues/1709)/[#1710](https://github.com/tauri-apps/wry/issues/1710)) remains the one unresolved item blocking full confidence in the Android target, independent of the Go-vs-Rust question below.
-- [x] Whether WASM is even the right delivery mechanism for the native targets evaluated (see decision `020`'s amendment) — coupled to the Rust question: staying on Go effectively forces WASM-in-webview everywhere; moving to Rust would let Tauri run the core as its native backend via IPC instead, needed only for the web build otherwise. Not resolved which path is taken — that depends on the rewrite decision below, still open.
-- [ ] A decision recorded (roadmap, since it would touch `character`/`stage`/`sff`/`engine` — foundational, cross-repo) on whether a Rust rewrite is justified, and if so which library first (`engine` alone vs. all four) and how migration is sequenced without freezing feature work. **Spike data gathered, decision itself not yet made** — see Notes.
-- [ ] If rewrite is rejected, the reasoning is recorded so the question isn't silently reopened without new evidence
-- [ ] Either way, the decision lands before `engine` backlog item `005` starts, so `005`/`006` are written once, in the right language, not written in Go then possibly redone
+- [x] ~~The same benchmark also run inside Tauri's **Android** webview~~ — **moot**: Tauri is dropped (see decision `021`), so its Android-webview secure-context risk no longer applies. Wails carries its own, different mobile-maturity risk instead — tracked separately as backlog `009`, not part of this item.
+- [x] Whether WASM is even the right delivery mechanism for the native targets evaluated (see decisions `020`/`021`) — resolved: staying on Go, WASM is needed only for the web build; Wails runs the Go core natively (no WASM) on Windows/Mac/Linux/Android.
+- [x] A decision recorded on whether a Rust rewrite is justified — **rejected, staying Go** (2026-08-16). Applies to `engine` and, by the same reasoning, `character`/`stage`/`sff` (never seriously in question independently).
+- [x] Reasoning for rejecting the rewrite recorded — see Notes: the GC-pause fear the spike was meant to test wasn't confirmed, and Rust's own costs (ownership-model friction on graph-like state, slower compiles cutting against the TDD loop, learning curve) outweighed the raw speed/size win once that fear was off the table.
+- [x] Decision landed before `engine` backlog item `005` starts — gate lifted, see that item's own notes.
 
 ## Notes
 Deliberately not decided speculatively in decision `020` — rewriting `character`/`stage`/`sff`/`engine` outright, with no data, would be premature optimization. But deferring indefinitely has a real, growing cost (more Go code to discard the longer it waits), so this is scoped as a fast, cheap spike gated in front of `engine`'s next backlog item, not an open-ended "someday" question.
@@ -30,3 +30,5 @@ Deliberately not decided speculatively in decision `020` — rewriting `characte
 - **Real learning-curve cost**, on top of the one already noted for Tauri vs. Wails (decision `020`) — applies again here, to the core rather than the shell, and matters more since `engine`'s data shapes aren't stabilized yet (still early, exploratory backlog items).
 
 Net effect: with the GC-pause fear undercut by the spike, the case for Rust now rests mainly on raw speed/binary size vs. these ergonomic/velocity costs — a genuine trade-off, not a one-sided call, and not one this item should resolve unilaterally.
+
+**Closed 2026-08-16:** Product Owner decided to stay on Go — the speed/size win wasn't judged worth the ownership-model/compile-time/learning-curve costs above, especially with the GC-pause risk not showing up in the data. This in turn removed decision `020`'s reason for picking Tauri (a Rust-based shell) over Wails (Go-based) — see decision `021`, which switches native-target packaging to Wails now that nothing about the stack needs Rust.
