@@ -9,8 +9,9 @@ Each domain (`character`, `stage`, `lifebar`, …) follows the same split, mirro
 - `<domain>-viewer-web` — static web app to **visualize** (and, where applicable, control) content of that domain. Read-only.
 - `<domain>-editor` — app to **modify and/or create** content of that domain. Read+write.
 
-Two repos sit outside any single domain, shared by several of the above:
+Three repos sit outside any single domain, shared by several of the above:
 - [`sff`](https://github.com/openkakutou/sff) — sprite (`.sff` v1/v2 + palettes) parsing, extracted out of `character` because `stage` and `lifebar` need it too. See `.vibe/decisions/007`.
+- `snd` — sound (`.snd` v1/v2) parsing, needed independently by `character` (a character's own sounds) and `mode-quick-versus` (system/common sound sets). See `.vibe/decisions/026`.
 - [`web-ui-kit`](https://github.com/openkakutou/web-ui-kit) — shared design system (Web Components + tokens) for every viewer/editor/mode web app. See `.vibe/decisions/011`.
 
 Separately, `mode-<name>` is a **game mode**: a standalone, autonomous game consuming `engine` for one specific way of playing (its own character-selection flow, match flow, result flow) — e.g. `mode-quick-versus`, `mode-tag-battle`. Each ships as a complete playable game on its own; combining several modes into one game is a deferred future possibility, not currently scoped. See `.vibe/decisions/005` and `.vibe/decisions/006`.
@@ -24,6 +25,7 @@ Compatibility target for every parser in this org (`character`, `sff`, `stage`, 
 | Domain | Repo | Status | Role |
 |---|---|---|---|
 | shared | [`sff`](https://github.com/openkakutou/sff) | active | Read/write Go library for MUGEN/Ikemen `.sff` v1/v2 sprite files and palette resolution. Extracted out of `character`; depended on by `character`, `stage`, `lifebar-viewer-web`, `lifebar-editor`. Compiles to WASM, no rendering dependency. See `.vibe/decisions/007`. |
+| shared | `snd` | planned | Read/write Go library for MUGEN/Ikemen `.snd` v1/v2 sound files, decoding to raw PCM. Needed by `character` (a character's own hit/voice/taunt sounds) and directly by `mode-quick-versus` (system/common sound sets not tied to any character). Compiles to WASM, no playback dependency — playback is each consuming app's own job. See `.vibe/decisions/026`. |
 | shared | [`web-ui-kit`](https://github.com/openkakutou/web-ui-kit) | active | Shared design system (Web Components + CSS tokens, framework-agnostic) for every viewer/editor/mode web app: layout shell, form/input components, canvas/viewport controls, accessibility baseline. See `.vibe/decisions/011`. |
 | character | [`character`](https://github.com/openkakutou/character) | active | Read/write Go library for MUGEN/Ikemen GO character files (`.def`/`.air`/`.cns`/`.cmd`/`.zss`, sprites via `sff`). Foundation everything else in this domain depends on; compiles to WASM, no rendering dependency. |
 | character | [`character-viewer-web`](https://github.com/openkakutou/character-viewer-web) | active | Visualize and control a character: browse sprites, palettes, characteristics and animations, and trigger animations/moves live, via the `character` WASM build. Read-only. Was backlog-blocked on `character`'s real-world file compatibility fixes; unblocked as of `character` v0.7.0, see `.vibe/decisions/017`. |

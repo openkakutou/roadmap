@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Scope org-wide audio (`.snd`) support
 
@@ -16,10 +16,12 @@ What needs a Product Owner + technical decision, mirroring how `sff` was scoped 
 - Playback: which repo actually plays decoded audio — `engine`'s WASM boundary would need to expose "sound X should play now" events (mirroring how it currently exposes animation/health/round state), leaving the actual `AudioContext`/playback to `mode-quick-versus`, consistent with `engine` owning simulation and not rendering (`.vibe/decisions/004`, `008` in `engine`... — actually see roadmap `.vibe/decisions/008`).
 
 ## Acceptance Criteria
-- [ ] Where `.snd` parsing lives (new shared repo vs. inside `character`) is decided and recorded as a decision
-- [ ] Compatibility bar for the decode (MUGEN version(s) + Ikemen GO extensions) is decided and recorded
-- [ ] How a decoded sound reaches actual playback — which repo/layer triggers it, which plays it — is decided and recorded
-- [ ] Concrete backlog items exist in each repo whose work this decision unblocks (at minimum: the sound-parsing repo, `engine`'s controller execution, `mode-quick-versus`'s playback, `character-editor`'s sound browser)
+- [x] Where `.snd` parsing lives (new shared repo vs. inside `character`) is decided and recorded as a decision
+- [x] Compatibility bar for the decode (MUGEN version(s) + Ikemen GO extensions) is decided and recorded
+- [x] How a decoded sound reaches actual playback — which repo/layer triggers it, which plays it — is decided and recorded
+- [x] Concrete backlog items exist in each repo whose work this decision unblocks (at minimum: the sound-parsing repo, `engine`'s controller execution, `mode-quick-versus`'s playback, `character-editor`'s sound browser)
 
 ## Notes
 Raised while auditing the org for gaps standing between the current state and "a complete game and complete editors" (2026-09-22). Cross-repo signal already in place: `character/cns` already parses `PowerAdd`/other state controllers generically without interpreting them — the same pattern likely applies to `PlaySnd`, so `engine` should be able to recognize the controller type once it has real sound data to hand it.
+
+**Resolved 2026-09-22** by `.vibe/decisions/026`: new shared `snd` repo (parallel to `sff`) for `.snd` v1/v2 decode, needed independently by `character` and `mode-quick-versus`; `stage` separately gains a `Music` field (plain file path, no decoder needed — a smaller gap found while resolving this one, `stage/parser.go:43`); `engine` triggers `PlaySnd` as an event, never decodes/plays; playback (Web Audio / SDL2_mixer) is each consuming app's own job. `repos.md` updated with `snd` as `planned`. Concrete follow-up items created: `stage#013`, `engine#020`, `character#057` (blocked on `snd` existing), `character-editor#017` (blocked on `character#057`), `mode-quick-versus#013` (blocked on all three). The `snd` GitHub repo itself is not yet created — left for explicit go-ahead.
