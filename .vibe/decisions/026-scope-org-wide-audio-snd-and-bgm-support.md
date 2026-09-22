@@ -31,4 +31,4 @@ Concrete backlog items created in each affected repo now that this is scoped:
 - `character-editor#017` — sound browser/preview panel (blocked: depends on `character#057`)
 - `mode-quick-versus#013` — match audio playback, both sound effects and stage BGM (blocked: depends on `stage#013`, `engine#020`, `character#057`)
 
-**Not yet done:** the `snd` repo itself hasn't been created (no `gh repo create` run) — that's an outward-facing, semi-irreversible action left for explicit go-ahead rather than bundled into this planning pass.
+**Repo created 2026-09-22**, on explicit go-ahead: `gh repo create openkakutou/snd`, scaffolded via `/vibe:init` mirroring `sff`'s own skeleton (`go.mod`, `version.go`, `CLAUDE.md`, `.vibe/`, README with managed sections), pushed to `main`. No `.snd` parsing code yet — `character#057` and `mode-quick-versus#013` are unblockable now, but still need this repo's own read/decode implementation first.
