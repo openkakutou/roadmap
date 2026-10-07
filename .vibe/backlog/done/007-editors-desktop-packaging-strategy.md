@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Pick a packaging/stack strategy for standalone desktop builds (Windows, Mac, Linux) of `character-editor`, `stage-editor`, and `lifebar-editor`
 
@@ -25,3 +25,5 @@ Raised from decision `019`, prompted by the Product Owner clarifying `openkakuto
 **Superseded 2026-08-16 (later same day)** by `.vibe/decisions/021`: after backlog `008`'s Rust-vs-Go spike, the core stays Go — which removes decision `020`'s reason for Tauri over Wails. The strategy is now **Wails**, not Tauri, still shared across all three editors and `mode-quick-versus`. Implementation work (per-repo Wails setup, per-OS CI matrix, showcase pill updates) is unchanged in shape, just targets Wails instead.
 
 **Superseded again 2026-08-16 (same day)** by `.vibe/decisions/022`: Wails dropped entirely — no webview anywhere in the org. The three editors no longer share a strategy with `mode-quick-versus` (which moves to a from-scratch `go-gl`+SDL2 renderer, not a fit for forms/panels apps). Editors' strategy is now **[Fyne](https://fyne.io/)**, a native Go GUI toolkit with ready-made widgets (forms, lists, buttons, scrolling) suited to CRUD-style editing UI — chosen over Gio (lower-level, immediate-mode, answers a performance question these apps don't have). Each editor gets its own from-scratch Fyne UI; `web-ui-kit` stays web-only, same "two separate UI implementations" shape decision `022` describes for `mode-quick-versus`. Implementation (per-repo Fyne setup, per-OS CI matrix, showcase pill updates) still not started — tracked as each editor's own repo-local backlog once that work begins.
+
+**Closed 2026-10-07:** Product Owner confirmed Fyne (decision `022`). Strategy is settled; implementation is now tracked per repo: `character-editor#020`, `stage-editor#012`, `lifebar-editor#014` (Fyne app, per-OS CI matrix, release assets, showcase pills). The remaining acceptance criteria are carried by those items.
