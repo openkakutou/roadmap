@@ -26,7 +26,7 @@ import subprocess
 # Keep in sync with ../repos.md. Order here controls display order within
 # each domain group in the dashboard.
 REPO_ORDER = [
-    "sff", "web-ui-kit",
+    "sff", "snd", "web-ui-kit",
     "character", "character-viewer-web", "character-editor",
     "stage", "stage-viewer-web", "stage-editor",
     "lifebar-viewer-web", "lifebar-editor",
@@ -35,7 +35,7 @@ REPO_ORDER = [
 ]
 
 DOMAIN = {
-    "sff": "shared", "web-ui-kit": "shared",
+    "sff": "shared", "snd": "shared", "web-ui-kit": "shared",
     "character": "character", "character-viewer-web": "character", "character-editor": "character",
     "stage": "stage", "stage-viewer-web": "stage", "stage-editor": "stage",
     "lifebar-viewer-web": "lifebar", "lifebar-editor": "lifebar",
