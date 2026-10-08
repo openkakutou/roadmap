@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Scope and create the `openkakutou.github.io` repo
 
@@ -17,7 +17,7 @@ Open questions for the Product Owner before/at repo creation:
 - [x] Stack choice recorded: plain HTML/CSS, no framework, no build step. Hosting: GitHub Pages via the special org-site repo name, root URL — Pages was already auto-enabled on repo creation (`build_type: legacy`, source `main` root)
 - [x] First version live at https://openkakutou.github.io/ — links to the three currently-live `*-viewer-web` apps, with `character-editor`/`stage-editor`/`lifebar-editor`/`mode-quick-versus` shown as "in development" placeholders (no Pages deployment yet to link to)
 - [x] `repos.md` status for `openkakutou.github.io` updated from "planned" to "active"
-- [ ] `openkakutou.github.io` added to `REPO_ORDER`/`DOMAIN` in `dashboard/build_data.py` (org-wide) — left for a follow-up pass, low priority for a repo with no `.vibe/backlog` yet
+- [x] `openkakutou.github.io` added to `REPO_ORDER`/`DOMAIN` in `dashboard/build_data.py` (org-wide)
 
 ## Notes
 Raised from `.vibe/decisions/018`. Resolved 2026-08-10 per Product Owner's "create it now, simple site, iterate later": repo created, minimal hand-written `index.html`, no `.vibe/` scaffold or CI yet — noted in the repo's own `CLAUDE.md` as an intentional deferral, not an oversight, to revisit once the site grows past a single static page. Placeholder cards for editors/`mode-quick-versus` should become real links once those repos get their own GitHub Pages deployment (decision `015`'s pattern extended to them, still an open question per that decision's "deferred, not rejected" note).

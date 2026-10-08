@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Resolve desktop OpenGL vs. OpenGL ES for `mode-quick-versus`'s Android build
 

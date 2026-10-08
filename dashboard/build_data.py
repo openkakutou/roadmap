@@ -30,7 +30,7 @@ REPO_ORDER = [
     "character", "character-viewer-web", "character-editor",
     "stage", "stage-viewer-web", "stage-editor",
     "lifebar-viewer-web", "lifebar-editor",
-    "engine", "roadmap",
+    "engine", "roadmap", "openkakutou.github.io",
     "mode-quick-versus",
 ]
 
@@ -39,7 +39,7 @@ DOMAIN = {
     "character": "character", "character-viewer-web": "character", "character-editor": "character",
     "stage": "stage", "stage-viewer-web": "stage", "stage-editor": "stage",
     "lifebar-viewer-web": "lifebar", "lifebar-editor": "lifebar",
-    "engine": "org-wide", "roadmap": "org-wide",
+    "engine": "org-wide", "roadmap": "org-wide", "openkakutou.github.io": "org-wide",
     "mode-quick-versus": "mode",
 }
 
