@@ -18,7 +18,7 @@ The playable game is [`game`](https://github.com/openkakutou/game) (formerly `mo
 
 Also outside any single domain: [`openkakutou.github.io`](https://github.com/openkakutou/openkakutou.github.io) is the org's public-facing showcase site — lists and links out to whichever viewer, editor, and complete game (`mode-*`) apps are currently live. Uses GitHub's special user/organization-site repo name so it publishes at the bare root `https://openkakutou.github.io/` rather than a project-site sub-path. Doesn't host or reimplement any app's own functionality, purely a discovery layer on top of each app's own deployment (see `.vibe/decisions/015`). See `.vibe/decisions/018`.
 
-Compatibility target for every parser in this org (`character`, `sff`, `stage`, and lifebar's in-app parsing): MUGEN 1.0/1.1 **and** Ikemen GO, validated against real community files — not just the spec. Includes Ikemen GO's `.cmd`/`.zss` extensions where applicable (see `.vibe/decisions/012` for `.zss`).
+Compatibility target for every parser in this org (`character`, `sff`, `stage`, and lifebar's in-app parsing): MUGEN 1.0/1.1 **and** Ikemen GO, validated against real community files — not just the spec. Includes Ikemen GO's `.cmd`/`.zss` extensions where applicable (see `.vibe/decisions/012` for `.zss`). Ikemen GO, which itself targets MUGEN compatibility, is the verification reference: behavior is checked against its source and by end-to-end differential tests running the same content in both, for content that works in Ikemen GO; OpenKakutou-only extensions are exempt (see `.vibe/decisions/038`).
 
 ## Repos
 
