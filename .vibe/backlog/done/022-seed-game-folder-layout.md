@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Seed `game`'s backlog with the install folder layout
 

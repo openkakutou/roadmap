@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Mode definitions in `game`: format, built-in screens, quick versus as data
 
