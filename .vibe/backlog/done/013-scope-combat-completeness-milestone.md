@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Define the combat-completeness milestone for engine and game
 

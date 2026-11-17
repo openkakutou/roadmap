@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Create the `fnt` repo
 
