@@ -31,7 +31,7 @@ REPO_ORDER = [
     "stage", "stage-viewer-web", "stage-editor",
     "lifebar-viewer-web", "lifebar-editor",
     "engine", "roadmap", "openkakutou.github.io",
-    "mode-quick-versus",
+    "game",
 ]
 
 DOMAIN = {
@@ -40,7 +40,7 @@ DOMAIN = {
     "stage": "stage", "stage-viewer-web": "stage", "stage-editor": "stage",
     "lifebar-viewer-web": "lifebar", "lifebar-editor": "lifebar",
     "engine": "org-wide", "roadmap": "org-wide", "openkakutou.github.io": "org-wide",
-    "mode-quick-versus": "mode",
+    "game": "org-wide",
 }
 
 KNOWN_STATUSES = {"todo", "in_progress", "blocked"}

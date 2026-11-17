@@ -9,7 +9,7 @@ The showcase site is a single hand-written index.html with no .vibe/ scaffold, n
 ## Acceptance Criteria
 - [ ] Repo initialised with /vibe:init and a backlog dir
 - [ ] CI checks that every linked app URL responds
-- [ ] Editors and mode-quick-versus cards updated to live links where released
+- [ ] Editors and `game` cards updated to live links where released
 
 ## Notes
 Decision 018 said to revisit the stack when the page grows.

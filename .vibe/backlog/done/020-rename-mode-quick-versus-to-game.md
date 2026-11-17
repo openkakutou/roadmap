@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Rename `mode-quick-versus` to `game`
 
@@ -14,8 +14,8 @@ Known references (2026-11-17 scan, excluding history: decisions, done items, cha
 - the local workspace folder and the workspace `CLAUDE.md`.
 
 ## Acceptance Criteria
-- [ ] Repo renamed on GitHub; local checkout moved to `game/`, remote URL updated
-- [ ] Go module path updated, native build and tests green
-- [ ] Web build deployed at `openkakutou.github.io/game/`; showcase site link updated
-- [ ] No remaining reference to `mode-quick-versus` outside history (decisions, done items, changelogs)
-- [ ] Release/pin propagation docs of producer repos (`character`, `engine`, `snd`, `sff`, `stage`) name `game` as the consumer
+- [x] Repo renamed on GitHub; local checkout moved to `game/`, remote URL updated
+- [x] Go module path updated, native build and tests green
+- [x] Web build deployed at `openkakutou.github.io/game/`; showcase site link updated
+- [x] No remaining reference to `mode-quick-versus` outside history (decisions, done items, changelogs)
+- [x] Release/pin propagation docs of producer repos (`character`, `engine`, `snd`, `sff`, `stage`) name `game` as the consumer
