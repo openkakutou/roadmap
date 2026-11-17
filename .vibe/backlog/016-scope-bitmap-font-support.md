@@ -12,4 +12,5 @@ Real lifebars and screenpacks render names, timers and combo counters with MUGEN
 - [ ] MUGEN 1.0/1.1 and Ikemen GO font formats named as targets, with real fonts as fixtures
 
 ## Notes
+Decision `029`: OpenKakutou screenpacks use standard fonts (TTF/OTF/WOFF2), so screenpacks are not a `.fnt` consumer; lifebars and characters remain.
 Lifebar viewer/editor currently have no font handling (no .fnt code in src/). Follows the extraction logic of decision 007 (sff) and 026 (snd). Compat is a MUST: MUGEN 1.0/1.1 and Ikemen GO, validated against real community files.

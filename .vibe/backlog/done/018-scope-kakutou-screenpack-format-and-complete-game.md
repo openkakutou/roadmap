@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Scope the complete-game layer: an OpenKakutou screenpack format, options, controls and content discovery
 
