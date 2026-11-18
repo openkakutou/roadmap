@@ -1,6 +1,6 @@
 ---
 date: 2026-11-18
-status: accepted
+status: superseded by 044
 ---
 # Acceptance character: our own free character, not Kung Fu Man
 
