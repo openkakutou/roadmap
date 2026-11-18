@@ -19,5 +19,5 @@ https://openkakutou.github.io/ is today a short hand-written list of live apps (
 
 ## Notes
 - The repo has no `.vibe/` yet: item 012 (vibe setup and link check) comes first or alongside; decision 018 says to revisit the plain-HTML stack when the page grows.
-- The videos come from the differential test against Ikemen GO (engine#036, game#051, decisions 039 and 042): scripted inputs, fixed seed, no CPU. Until the engine moves characters (engine#039, #041, #028), a video would only show a divergence, so the fidelity section can start with the measured figure and gain videos as parity improves.
+- The videos are produced by game#052 from the differential test against Ikemen GO (engine#036, game#051, decisions 039 and 042): scripted inputs, fixed seed, no CPU. Until the engine moves characters (engine#039, #041, #028), a video would only show a divergence, so the fidelity section can start with the measured figure and gain videos as parity improves.
 - Ikemen GO is MIT-licensed; character and stage content is not ours: pick content whose authors allow redistribution, or OpenKakutou's own content.
