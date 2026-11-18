@@ -14,10 +14,10 @@ https://openkakutou.github.io/ is today a short hand-written list of live apps (
 - [ ] The page explains the project, its goal and its audience in plain words before listing the apps
 - [ ] The page is visually attractive and works at phone width
 - [ ] A fidelity section shows side-by-side videos (Ikemen GO vs OpenKakutou) of the same scripted match, each naming the characters, stage and the frames identical before the first divergence
-- [ ] Every video uses only content whose license allows redistribution, credited on the page
+- [ ] Every video credits the authors of the characters, stage and lifebar it shows
 - [ ] Every linked app still works (links checked)
 
 ## Notes
 - The repo has no `.vibe/` yet: item 012 (vibe setup and link check) comes first or alongside; decision 018 says to revisit the plain-HTML stack when the page grows.
 - The videos are produced by game#052 from the differential test against Ikemen GO (engine#036, game#051, decisions 039 and 042): scripted inputs, fixed seed, no CPU. Until the engine moves characters (engine#039, #041, #028), a video would only show a divergence, so the fidelity section can start with the measured figure and gain videos as parity improves.
-- Ikemen GO is MIT-licensed; character and stage content is not ours: pick content whose authors allow redistribution, or OpenKakutou's own content.
+- Videos may use any content from the Product Owner's local Ikemen GO collection (Product Owner, 2026-11-18): only the video is published, never the characters or stages themselves. Authors are credited.
