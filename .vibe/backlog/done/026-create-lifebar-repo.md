@@ -1,5 +1,5 @@
 ---
-status: todo
+status: done
 ---
 # Create the `lifebar` repo
 
@@ -9,7 +9,7 @@ Decision `046`. Create `openkakutou/lifebar` with the usual Go library setup (`/
 🔒 MUST: lifebars as used by real MUGEN 1.0/1.1 and Ikemen GO content, behavior grounded in Ikemen GO's source (decision `041`).
 
 ## Acceptance Criteria
-- [ ] Repo exists with CLAUDE.md, CI and release pipeline, like `stage`/`fnt`
-- [ ] Backlog seeded, each item linking decision `046`
-- [ ] Adoption items created in `lifebar-viewer-web`, `lifebar-editor` and `game` (the latter through `game` 060's shared core)
-- [ ] `repos.md` lists `lifebar` as active; decision `009`'s lifebar line points to `046`
+- [x] Repo exists with CLAUDE.md, CI and release pipeline, like `stage`/`fnt`
+- [x] Backlog seeded, each item linking decision `046`
+- [x] Adoption items created in `lifebar-viewer-web`, `lifebar-editor` and `game` (the latter through `game` 060's shared core)
+- [x] `repos.md` lists `lifebar` as active; decision `009`'s lifebar line points to `046`
