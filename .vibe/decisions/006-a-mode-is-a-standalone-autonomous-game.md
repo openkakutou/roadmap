@@ -1,6 +1,6 @@
 ---
 date: 2026-08-08
-status: accepted
+status: superseded by 030
 ---
 # A `mode-*` repo is a standalone, autonomous game — not a piece requiring external assembly
 

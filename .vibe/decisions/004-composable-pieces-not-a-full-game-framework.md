@@ -1,6 +1,6 @@
 ---
 date: 2026-08-08
-status: accepted
+status: superseded by 029, 030
 ---
 # OpenKakutou builds composable pieces, not a full game framework like MUGEN/Ikemen
 
