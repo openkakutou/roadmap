@@ -54,5 +54,8 @@ OpenKakutou repo, runs the same two scripts, and republishes to the same
 URL. Its prompt is intentionally self-contained (the cloud session starts
 with zero context) — see the routine definition at
 https://claude.ai/code/routines for the exact prompt if it ever needs
-editing. If a repo is renamed or a new one is added, update `REPO_ORDER`/
-`DOMAIN` in `build_data.py` **and** the routine's `sources` list.
+editing. Repos are discovered from the workspace: every sibling directory with a
+`.vibe/backlog/` is included. Display order and domain come from `../repos.md`.
+A repo listed as `active` there but missing from the checkout is skipped with a
+warning, not a failure. A new repo therefore only needs a row in `repos.md` and
+a checkout in the routine's `sources`; no code change is needed.
